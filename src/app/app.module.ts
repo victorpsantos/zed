@@ -5,6 +5,8 @@ import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { config } from 'src/config/config';
 import { configSchema } from 'src/config/config.schema';
 
+import { IamModule } from 'src/modules/iam/iam.module';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 
@@ -19,12 +21,13 @@ import { AppService } from './app.service';
     TypeOrmModule.forRootAsync({
       inject: [ConfigService],
       useFactory: async (configService: ConfigService) => {
-        console.log(configService.get('db'))
         return <TypeOrmModuleOptions>{
           ...(await configService.getOrThrow('db')),
         };
       },
     }),
+
+    IamModule,
   ],
   controllers: [AppController],
   providers: [AppService],
