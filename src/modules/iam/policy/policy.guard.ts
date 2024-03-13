@@ -1,12 +1,17 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 
-import { CHECK_POLICIES_KEY } from '@common/decorators/check-policy.decorator';
-import { PolicyRule } from '@common/types/policy-rule.type';
+import { CHECK_POLICIES_KEY } from './policy.decorator';
+
+import { AccessService } from '../access/access.service';
+import { PolicyRule } from '../access/access.type';
 
 Injectable();
 export class PolicyGuard implements CanActivate {
-  constructor(private readonly reflector: Reflector) {}
+  constructor(
+    private readonly reflector: Reflector,
+    private readonly accessService: AccessService,
+  ) {}
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const policyRules =

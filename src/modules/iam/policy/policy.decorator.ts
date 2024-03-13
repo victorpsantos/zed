@@ -1,6 +1,5 @@
 import { SetMetadata } from '@nestjs/common';
-
-import { PolicyRule } from '@common/types/policy-rule.type';
+import { PolicyRule } from '../access/access.type';
 
 export const CHECK_POLICIES_KEY = 'check_policies';
 export const CheckPolicies = (...policyRules: PolicyRule[]) =>

@@ -1,10 +1,11 @@
-import { PolicyAbility as IPolicyAbility } from '@common/interfaces/policy-ability.interface';
+import { PolicyAbility as IPolicyAbility } from '@modules/iam/access/policy-ability.interface';
+import { User } from '@common/interfaces/user.interface';
 import { Condition, PolicyConditionType } from '@common/types/condition.type';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class PolicyAbilityFactory {
-  createForUser(): IPolicyAbility {
+export class AbilityFactory {
+  createAbility(user: User): IPolicyAbility {
     // Falta implementar a lógica
 
     return new PolicyAbility();

@@ -1,9 +1,8 @@
-import { PolicyScope, ReadPolicy } from './policy.action';
-import { PolicyAbility } from '@common/interfaces/policy-ability.interface';
-import { PolicyRule } from '@common/types/policy-rule.type';
+import { AccessAbility } from '../access/access.interface';
+import { AccessRule } from '../access/access.type';
 
-export const ListPoliciesPolicyRule: PolicyRule = (
-  policyAbility: PolicyAbility,
+export const ListPoliciesAccessRule: AccessRule = (
+  accessAbility: AccessAbility,
   ...args: any[]
 ) => {
   return false;

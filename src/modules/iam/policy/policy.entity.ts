@@ -4,6 +4,7 @@ import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 import { Action } from '@common/interfaces/action.interface';
 import { Policy } from '@common/interfaces/policy.interface';
 import { Effect } from '@common/enums/effect.enum';
+import { Condition } from '@common/types/condition.type';
 
 @Entity()
 export class PolicyEntity implements Policy {
@@ -17,13 +18,13 @@ export class PolicyEntity implements Policy {
   effect: Effect;
 
   @Column({ type: 'array' })
-  scopes: NestModule[];
+  resources: NestModule[];
   
   @Column({ type: 'array' })
   actions: Action[];
 
   @Column({ type: 'array' })
-  conditions: string[];
+  conditions: Condition[];
 }
 
 /**
